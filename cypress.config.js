@@ -883,20 +883,18 @@ module.exports = defineConfig({
     deleteUserRolesByIdByoriganization2: "/roles/",
     deleteUserRolesByIdByoriganization3: "/",
 
-    createDocument1:"/api/v1/apps/",
-    createDocument2:"/document/",
-    getDocumentById1:"/api/v1/apps/",
-    getDocumentById2:"/document/",
-    getDocumentById3:"/",
-    putDocumentById1:"/api/v1/apps/",
-    putDocumentById2:"/document/",
-    putDocumentById3:"/",
-    patchDocumentById1:"/api/v1/apps/",
-    patchDocumentById2:"/document/",
-    patchDocumentById3:"/",
-    deleteDocumentById1:"/api/v1/apps/",
-    deleteDocumentById2:"/document/",
-    deleteDocumentById3:"/"
+    getListOfCodePackages: "/api/v2/code_packages/",
+    createCodePackages: "/api/v2/code_packages/",
+    getCodePackagesById1: "/api/v2/code_packages/",
+    getCodePackagesById2: "/",
+    putCodePackagesById1: "/api/v2/code_packages/",
+    putCodePackagesById2: "/",
+    patchCodePackagesById1: "/api/v2/code_packages/",
+    patchCodePackagesById2: "/",
+   
+
+
+    
 
   },
   e2e: {

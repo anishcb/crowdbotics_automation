@@ -66,3 +66,85 @@ export const doDeleteDocumentById = (auth_key,app_id,document_id) => {
         return response;
     })
 }
+export const doGetListCodePackages = (auth_key) => {
+
+    return cy.request({
+        method: 'GET',
+        url: Cypress.env('baseUrl') + Cypress.env('getListOfCodePackages'),
+        headers: {
+            'Authorization': 'Token ' + auth_key
+        }
+    }).then((response) => {
+        return response;
+    })
+}
+export const doCreateCodePackages = (auth_key,codePackage_name) => {
+    cy.readFile('cypress/fixtures/api_add_code_packages.json').then((data) => {
+        data.package_name = codePackage_name;
+        cy.writeFile('cypress/fixtures/api_add_code_packages.json', JSON.stringify(data))
+    })
+    return cy.fixture('api_add_code_packages.json').then((myFixture) => {
+        cy.request({
+            method: 'POST',
+            url: Cypress.env('baseUrl') + Cypress.env('createCodePackages'),
+            headers: {
+                'Authorization': 'Token ' + auth_key
+            },
+            body: myFixture
+        }).then((response) => {
+            return response;
+        })
+    })
+}
+export const doGetCodePackagestById = (auth_key,codepackage_id) => {
+
+    return cy.request({
+        method: 'GET',
+        url: Cypress.env('baseUrl') + Cypress.env('getCodePackagesById1')+codepackage_id+Cypress.env('getCodePackagesById2'),
+        headers: {
+            'Authorization': 'Token ' + auth_key
+        }
+    }).then((response) => {
+        return response;
+    })
+}
+export const doPutCodePackageById = (auth_key,codepackage_id,codePackage_name,codePackage_Description,codePackage_Link) => {
+    cy.readFile('cypress/fixtures/api_putCodePackages_new.json').then((data) => {
+        data.package_name = codePackage_name;
+        data.package_desc = codePackage_Description;
+        data.package_url = codePackage_Link;
+        cy.writeFile('cypress/fixtures/api_putCodePackages_new.json', JSON.stringify(data))
+    })
+    return cy.fixture('api_putCodePackages_new.json').then((myFixture) => {
+        cy.request({
+            method: 'PUT',
+            url: Cypress.env('baseUrl') + Cypress.env('putCodePackagesById1')+codepackage_id+Cypress.env('putCodePackagesById2'),
+            headers: {
+                'Authorization': 'Token ' + auth_key
+            },
+            body: myFixture
+        }).then((response) => {
+            return response;
+        })
+    })
+}
+export const doPatchCodePackageById = (auth_key,codepackage_id,codePackage_name,codePackage_Description,codePackage_Link) => {
+    cy.readFile('cypress/fixtures/api_patchCodePackages_new.json').then((data) => {
+        data.package_name = codePackage_name;
+        data.package_desc = codePackage_Description;
+        data.package_url = codePackage_Link;
+        cy.writeFile('cypress/fixtures/api_patchCodePackages_new.json', JSON.stringify(data))
+    })
+    return cy.fixture('api_patchCodePackages_new.json').then((myFixture) => {
+        cy.request({
+            method: 'PATCH',
+            url: Cypress.env('baseUrl') + Cypress.env('patchCodePackagesById1')+codepackage_id+Cypress.env('patchCodePackagesById2'),
+            headers: {
+                'Authorization': 'Token ' + auth_key
+            },
+            body: myFixture
+        }).then((response) => {
+            return response;
+        })
+    })
+}
