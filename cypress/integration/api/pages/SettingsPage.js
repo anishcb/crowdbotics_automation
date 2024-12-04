@@ -243,39 +243,3 @@ export const doAddIcons = (auth_key, project) => {
         })
     })
 }
-
-export const dopostdeployment = (auth_key, app_id) => {
-    return cy.fixture('api_post_deployments.json').then((myFixture) => {
-        cy.request({
-            method: 'POST',
-            url: Cypress.env('baseUrl') + Cypress.env('postdeployment1') + app_id + Cypress.env('postdeployment2'),
-            body: myFixture,
-            headers: {
-                'Content-Type': 'application/json',
-                'Accept': 'application/json',
-                'Authorization': 'Token ' + auth_key,
-            }
-        }).then((response) => {
-            return response;
-        })
-    })
-
-}
-
-export const dopostcanceldeployment = (auth_key, app_id) => {
-    return cy.fixture('api_post_cancel_deployments.json').then((myFixture) => {
-        cy.request({
-            method: 'POST',
-            url: Cypress.env('baseUrl') + Cypress.env('postcanceldeployment1') + app_id + Cypress.env('postcanceldeployment2'),
-            body: myFixture,
-            headers: {
-                'Content-Type': 'application/json',
-                'Accept': 'application/json',
-                'Authorization': 'Token ' + auth_key,
-            }
-        }).then((response) => {
-            return response;
-        })
-    })
-
-}

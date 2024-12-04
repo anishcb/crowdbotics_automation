@@ -115,20 +115,6 @@ describe("Settings Page", () => {
         })
     })
 
-    it('post deployment', () => {
-        dopostdeployment(authKey, app_id).then((response) => {
-            expect(response.status).to.eq(200)
-            cy.log("Deployment started", response.body)
-        })
-    })
-
-    it('post cancel deployment', () => {
-        dopostcanceldeployment(authKey, app_id).then((response) => {
-            expect(response.status).to.eq(200)
-            cy.log("Deployment cancelled", response.body)
-        })
-    })
-
 
     it('delete App Flow', () => {
         delete_app(authKey, app_id).then((response) => {

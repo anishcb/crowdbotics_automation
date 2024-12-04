@@ -16,7 +16,6 @@
     "cy:parallel": "cypress-parallel -d cypress/integration/api/tests/ --threads 13 -s test && npm run report:merge && npm run report:generate",
     "report:merge": "mochawesome-merge cypress/reports/mocha/*.json > cypress/reports/mocha/fullReport.json",
     "report:generate": "marge cypress/reports/mocha/fullReport.json -f report -o cypress/reports/mocha"
-    
   },
   "author": "",
   "license": "ISC",
@@ -31,7 +30,7 @@
     "otplib": "^12.0.1"
   },
   "devDependencies": {
-    "cypress": "^13.2.0",
+    "cypress": "^13.16.0",
     "cypress-grep": "^3.0.4",
     "cypress-mochawesome-reporter": "^3.5.1",
     "cypress-multi-reporters": "^1.6.4",
