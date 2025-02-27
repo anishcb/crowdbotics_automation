@@ -1,7 +1,7 @@
 /// <reference types = "cypress"/>
 import { doCteareApp } from '../pages/DashboardPage.js';
 import { doStudioLogin } from '../pages/loginPage.js';
-import { doGetStudiopage, getStudioScreen, doGetStudioScreenEdge, doPostCreateStudioScreen, doPostCLIFeedback } from '../pages/StudioPage.js';
+import { doGetStudiopage, getStudioScreen, doGetStudioScreenEdge, doPostCreateStudioScreen, doPostCLIFeedback, doGetScreenAIJob, doPostScreenAIJobs, doGetScreenAIWithID} from '../pages/StudioPage.js';
 
 
 let app_id;
@@ -66,6 +66,29 @@ describe("Studio lnading page", () => {
             expect(response.status).to.eq(200)
             cy.log("Post CLI Feedback ", response.body)
 
+        })
+    })
+
+    it('Get Screen AI Jobs', () => {
+        doGetScreenAIJob(authKey, app_id).then((response) => {
+            expect(response.status).to.eq(200)
+            cy.log("Get Screen AI Jobs ", response.body)
+
+        })
+    })
+
+    it('Post Screen AI Jobs', () => {
+        doPostScreenAIJobs(authKey, app_id).then((response) => {
+            expect(response.status).to.eq(201)
+            cy.log("Post Screen AI Jobs ", response.body)
+            screen_id = response.body.id; 
+        })
+    })
+
+    it('Get Screen AI Jobs With ID', () => {
+        doGetScreenAIWithID(authKey, app_id, screen_id).then((response) => {
+            expect(response.status).to.eq(200)
+            cy.log("Post Screen AI Jobs ", response.body)
         })
     })
 

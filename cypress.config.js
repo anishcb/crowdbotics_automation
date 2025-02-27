@@ -1043,6 +1043,13 @@ module.exports = defineConfig({
    getPlansByID1: "/api/v2/plans/",
    getPlansByID2: "/",
    getProdcutmetrics: "/api/v2/product-metrics/",
+
+   getScreenAI1: "/api/v2/apps/",
+   getScreenAI2: "/screens-ai/jobs/",
+   postScreenAI1: "/api/v2/apps/",
+   postScreenAI2: "/screens-ai/jobs/",
+   getScreenAIWithID1: "/api/v2/apps/",
+   getScreenAIWithID2: "/screens-ai/jobs/",
    
   },
   e2e: {

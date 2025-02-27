@@ -73,3 +73,49 @@ export const doPostCreateStudioScreen = (auth_key, app_id,screen_id) => {
         })
     }; 
 
+    export const doGetScreenAIJob = (auth_key, app_id) => {
+
+        return cy.request({
+            method: 'GET',
+            url: Cypress.env('baseUrl') + Cypress.env('getScreenAI1') + app_id + Cypress.env('getScreenAI2'),
+            headers: {
+    
+                'Authorization': 'Token ' + auth_key, app_id
+            }
+    
+        }).then((response) => {
+            return response;
+        })
+    };
+
+    export const doPostScreenAIJobs = (auth_key, app_id) => {
+
+        return cy.fixture('api_addScreenAIJobs.json').then((myFixture) => {
+            cy.request({
+                method: 'POST',
+                url: Cypress.env('baseUrl') + Cypress.env('postScreenAI1') + app_id + Cypress.env('postScreenAI2'),
+                headers: {
+                    'Authorization': 'Token ' + auth_key, app_id
+                },
+                body: myFixture
+            }).then((response) => {
+                return response;
+            })
+        })
+    }; 
+
+    export const doGetScreenAIWithID = (auth_key, app_id, screen_id) => {
+
+        return cy.request({
+            method: 'GET',
+            url: Cypress.env('baseUrl') + Cypress.env('getScreenAIWithID1') + app_id + Cypress.env('getScreenAIWithID2') + screen_id,
+            headers: {
+    
+                'Authorization': 'Token ' + auth_key, app_id, screen_id
+            }
+    
+        }).then((response) => {
+            return response;
+        })
+    };
+
