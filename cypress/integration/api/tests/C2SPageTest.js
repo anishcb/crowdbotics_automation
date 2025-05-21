@@ -1,10 +1,11 @@
 
-import { doCreateAppWithRepoC2S,doCreateCodetospegenerate,doGetC2SErrorLog,doGetC2SSummaryDetails,dogetDownloadErrorLogFile,dogetDownloadPRDMetaData,dogetErroLogDetails } from '../pages/C2SPage.js';
+import { doGetC2SArchitectureDatabases,doGetC2SArchitectureCodeGraph,doGetC2SArchitectureC4,dogetC2SArchitectureActor,doCreateC2S,doCreateAppWithRepoC2S,doCreateCodetospegenerate,doGetC2SErrorLog,doGetC2SSummaryDetails,dogetDownloadErrorLogFile,dogetDownloadPRDMetaData,dogetErroLogDetails } from '../pages/C2SPage.js';
 import { doC2SLogin } from '../pages/loginPage.js';
 
-let  appId;
+let appId;
 let authKey;
 let app_name;
+let c2sId;
 describe("C2S Flow ", () => {
 
 
@@ -58,5 +59,40 @@ describe("C2S Flow ", () => {
             cy.log("Get Erro Log Details Response", response.body)
         })
      })
+  
+     it('Create C2S', () => {
+        doCreateC2S(authKey,  appId).then((response) => {
+            expect(response.status).to.eq(201);
+            c2sId = response.body.id;
+            cy.log("Create C2S  Response", response.body)
+        })
+     })
+
+     it('Get C2S Architecture Actor', () => {
+        dogetC2SArchitectureActor(authKey,  c2sId).then((response) => {
+            expect(response.status).to.eq(200);
+            cy.log("Get C2S Architecture Actor Response", response.body)
+        })
+     })
      
+      it('Get C2S Architecture C4', () => {
+        doGetC2SArchitectureC4 (authKey,  c2sId).then((response) => {
+            expect(response.status).to.eq(200);
+            cy.log("Get C2S Architecture C4 Response", response.body)
+        })
+     })
+     
+     it('Get C2S Architecture Code Graph', () => {
+        doGetC2SArchitectureCodeGraph(authKey,  c2sId).then((response) => {
+            expect(response.status).to.eq(200);
+            cy.log("Get C2S Architecture Code Graph Response", response.body)
+        })
+     })
+     
+     it('Get C2S Architecture Databases', () => {
+        doGetC2SArchitectureDatabases(authKey,  c2sId).then((response) => {
+            expect(response.status).to.eq(200);
+            cy.log("Get C2S Architecture Databases Response", response.body)
+        })
+     })
 })

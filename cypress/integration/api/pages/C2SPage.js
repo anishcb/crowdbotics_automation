@@ -102,3 +102,70 @@ export const dogetErroLogDetails = (auth_key, app_id) => {
         return response;
     })
 };
+
+export const doCreateC2S = (auth_key, app_id) => {
+    return cy.fixture('api_create_C2S.json').then((myFixture) => {
+        cy.request({
+            method: 'POST',
+            url: Cypress.env('baseUrl') + Cypress.env('createC2s1') + app_id + Cypress.env('createC2s2'),
+            body: myFixture,
+            headers: {
+                'Authorization': 'Token ' + auth_key,
+            }
+        }).then((response) => {
+            return response;
+        })
+    })
+};
+
+export const dogetC2SArchitectureActor = (auth_key, c2sId) => {
+
+    return cy.request({
+        method: 'GET',
+        url: Cypress.env('baseUrl') + Cypress.env('getC2SArchitectureActor1') + c2sId + Cypress.env('getC2SArchitectureActor2'),
+        headers: {
+            'Authorization': 'Token ' + auth_key
+        }
+    }).then((response) => {
+        return response;
+    })
+};
+
+export const doGetC2SArchitectureC4 = (auth_key, c2sId) => {
+
+    return cy.request({
+        method: 'GET',
+        url: Cypress.env('baseUrl') + Cypress.env('getC2SArchitectureC41') + c2sId + Cypress.env('getC2SArchitectureC42'),
+        headers: {
+            'Authorization': 'Token ' + auth_key
+        }
+    }).then((response) => {
+        return response;
+    })
+};
+
+export const doGetC2SArchitectureCodeGraph = (auth_key, c2sId) => {
+
+    return cy.request({
+        method: 'GET',
+        url: Cypress.env('baseUrl') + Cypress.env('getC2SArchitectureCodeGraph1') + c2sId + Cypress.env('getC2SArchitectureCodeGraph2'),
+        headers: {
+            'Authorization': 'Token ' + auth_key
+        }
+    }).then((response) => {
+        return response;
+    })
+};
+
+export const doGetC2SArchitectureDatabases = (auth_key, c2sId) => {
+
+    return cy.request({
+        method: 'GET',
+        url: Cypress.env('baseUrl') + Cypress.env('getC2SArchitectureDatabases1') + c2sId + Cypress.env('getC2SArchitectureDatabases2'),
+        headers: {
+            'Authorization': 'Token ' + auth_key
+        }
+    }).then((response) => {
+        return response;
+    })
+};
